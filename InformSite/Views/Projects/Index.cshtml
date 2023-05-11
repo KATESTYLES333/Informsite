@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InformSite.Models.Project>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Управление проектами</h1>
+
+<p>
+    <a asp-action="Create">Создать новый проект</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+       
+                <label class="control-label">Название</label>
+           
+            </th>
+            <th>
+                <label class="control-label">Описание</label>
+            </th>
+            <th>
+                <label class="control-label">Собранная сумма</label>
+            </th>
+            <th>
+                <label class="control-label">Окончательная сумма</label>
+            </th>
+            <th>
+                <label class="control-label">Категория</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

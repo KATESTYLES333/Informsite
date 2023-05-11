@@ -1,0 +1,34 @@
+﻿@using InformSite.Models
+@model Category
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Команда @Model.Title</h4>
+    <hr />
+    <dl>
+        <dt>Название</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>Игроки</dt>
+
+        <dd>
+            <ul>
+                @foreach (Project project in Model.Projects)
+                {
+                    <li>@project.Name (@project.Description)</li>
+
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+
